@@ -1,3 +1,5 @@
 <div *ngIf="flag">
-  <ng-container *ngTemplateOutlet="content.templateRef"></ng-container>
+  <div *ngFor="let content of contents">
+    <ng-container *ngTemplateOutlet="content.templateRef"></ng-container>
+  </div>
 </div>

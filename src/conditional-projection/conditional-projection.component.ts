@@ -2,9 +2,11 @@ import { CommonModule } from '@angular/common';
 import {
   Component,
   ContentChild,
+  ContentChildren,
   Directive,
   Input,
   OnInit,
+  QueryList,
   TemplateRef,
 } from '@angular/core';
 
@@ -26,7 +28,9 @@ export class ConditionalProjectionContentDirective {
 export class ConditionalProjectionComponent implements OnInit {
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.contents?.get(0))
+  }
 
   private _flag: boolean = false;
   @Input()
@@ -38,6 +42,6 @@ export class ConditionalProjectionComponent implements OnInit {
     return this._flag;
   }
 
-  @ContentChild(ConditionalProjectionContentDirective)
-  content!: ConditionalProjectionContentDirective;
+  @ContentChildren(ConditionalProjectionContentDirective)
+  contents!: QueryList<ConditionalProjectionContentDirective>;
 }

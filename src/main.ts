@@ -6,6 +6,7 @@ import {
   ConditionalProjectionComponent,
   ConditionalProjectionContentDirective,
 } from './conditional-projection/conditional-projection.component';
+import { CounterComponent } from './counter/counter.component';
 
 @Component({
   selector: 'my-app',
@@ -14,6 +15,7 @@ import {
     CommonModule,
     ConditionalProjectionComponent,
     ConditionalProjectionContentDirective,
+    CounterComponent
   ],
   template: `
     <h1>Hello from {{ name }}!</h1>
@@ -24,8 +26,16 @@ import {
     <button (click)="toggleFlag()">toggle</button>
     <app-conditional-projection [flag]="flag">
       <ng-template appConditionalProjectionContent>
-        <p>conditional-projection works!</p>
-      </ng-template>    
+        <app-counter></app-counter>
+        <p>this is first</p>
+      </ng-template>
+      <ng-template appConditionalProjectionContent>
+        <app-counter></app-counter>
+        <p>this is second</p>
+      </ng-template>
+      <ng-template appConditionalProjectionContent>
+        <p>this is third</p>
+      </ng-template>
     </app-conditional-projection>
   `,
 })
